@@ -1,0 +1,129 @@
+/* Styling for standard HTML tags. */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;     /* Retain box dimensions, incorporating border and padding. Don't expand size like default content-box. */
+}
+
+body {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+    color: black;
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+}
+
+/* Headlines for Dice, Cards, and Buttons. */
+h4 {
+    font-size: 2.28rem;
+    font-weight: 400;
+    line-height: 110%;
+    margin: 1.52rem 0 .912rem 0;
+}
+
+#root {
+    width: 100vw;   /* vw = 1% of viewport width so 100% fills all available horizontal space. */
+    height: 100vh;  /* vh = 1% of viewport height so 100% fills all available vertical space. Disable this if want game at top of screen, not middle. */
+    display: flex;  /* In conjunction with width and height above, enables margin: auto to center child gameContainer div. */
+}
+
+/* Root container of the game module. */
+#gameContainer {
+    width: 750px;       /* Assign sizing to gameContainer div so that it can be centered on screen. */
+    height: 500px;
+    margin: auto;       /* Center game vertically and horizontally. This works in conjunction with CSS defined for parent root tag. */
+}
+
+#diceContainer, #messageContainer { /* Want dice and message side by side. */
+    display: inline-block;
+}
+
+#cardsContainer {
+    perspective: 1000px;    /* Provides depth in the z-axis plane, works in conjunction with preserve-3d. */
+}
+
+.die, .card {
+    border: solid 3px purple;
+    border-radius: 20%;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    margin-bottom: 30px;
+    display: inline-block;  /* Display each die next to each other in horizontal row rather than vertically. */
+    text-align: center;
+}
+
+.card {
+    position: relative;             /* This positioning is required so that fronts and backs of cards (child divs) can be absolute. */
+    border: solid 3px blue;
+    transform-style: preserve-3d;   /* Places card at back of 1000px tunnel so it appears to rotate rather than flip flat in two dimensions. */
+    transition: transform 0.5s;     /* Animation needed so 3D effect can be seen. */
+}
+
+.card.flip {
+    transform: rotateY(180deg);
+}
+
+.frontFace, .backFace {
+    position: absolute;             /* Need fronts and backs of cards on top of each other. This only works if parent is positioned. */
+    width: 100%;                    /* Maximize child front and back face div widths to their parent card div. */
+    height: 100%;                   /* Maximize child front and back face div heights to their parent card div. */
+    -webkit-transform: translate3d(0,0,0); /* Need this line and the one that follows for browsers (i.e., Firefox, Safari) that do not support backface-visibility. */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;    /* Every HTML element has a back face, a mirrored image of itself. Prevent us from seeing it on card flip. */
+    cursor: pointer;
+}
+
+.backFace {
+    background-color: blue;
+    transform: rotateY(180deg);
+}
+
+.die.roll { /* Dice animation. */
+    transition: transform 1s;
+    transform: rotate(1080deg);
+}
+
+button {
+    height: 54px;
+    line-height: 54px;
+    font-size: 18px;
+    padding: 0 28px;
+    text-decoration: none;
+    color: white;
+    background-color: #26a69a;
+    text-align: center;
+    letter-spacing: .5px;
+    cursor: pointer;
+    outline: 0;
+    border: none;
+    border-radius: 2px;
+    display: inline-block;
+    /* text-transform: uppercase; */
+    vertical-align: middle;
+    font-weight: normal;
+    transform: scale(1);        /* Establish starting scale of 1 before the transition changes it to 90% scale. */
+}
+
+button:active {                 /* Active pseudo class gets triggered when button is clicked. */
+    transform: scale(0.90);     /* Shrink button to 90% of its original size before restoring it on key up. */
+    transition: transform 0.2s; /* Make a smoother transition by performing the size reduction over 200ms. */
+}
+
+.disabledButton {
+    color: darkgrey;
+    background-color: lightgrey;
+}
+
+#endTurn, #startGame {
+    margin-left: 30px;
+}
+
+/* Messages */
+#messageContainer {
+    display: inline-block;
+    width: 400px;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 100%;
+    margin-left: 30px;
+}
