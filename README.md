@@ -1,13 +1,14 @@
 # 'Shut the Box' Game
 This web application is an implementation of the 'Shut the Box' game described here:
+
 https://en.wikipedia.org/wiki/Shut_the_Box
 
-In summary, you roll dice and flip over cards until there are none left.
+In summary, you roll dice and flip over nine cards until there are none left face up.
 
 ## How to Play
 When you first launch the game, you are presented two dies, nine cards, and three buttons. 
 
-The dice have not yet been rolled so they display values of '-'. The cards are numbered 1 through 9 with all appearing face up. The buttons are labeled 'Roll Dice', 'End Turn', and 'Start New Game'.
+The dice have not yet been rolled so they display initial values of '-'. The cards are numbered 1 through 9 with all appearing face up. The buttons are labeled 'Roll Dice', 'End Turn', and 'Start New Game'.
 
 Click the 'Roll Dice' button. The dice will animate spinning and then settle down quickly, displaying numeric values from 1-6 each. Add them up, then flip over cards that match this total. For example, if you rolled a 4 and a 5 you would have a total of 9. You would then flip over any combination of card(s) that add up to 9. Possibilities are: the 9 card itself, 1 and 8 cards, 2 and 7 cards, 3 and 6 cards, or 4 and 5 cards. 
 
