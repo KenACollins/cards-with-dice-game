@@ -56,6 +56,10 @@ Some cool CSS is employed to enable the animated three-dimensional card flipping
 
 Comments in each source file provide additional details on the inner workings of the code.
 
+You can alternately view the game and its source code together at Codepen.io:
+
+https://codepen.io/KenACollins/pen/OKbwdJ
+
 ### Third Party Frameworks
 
 None.
